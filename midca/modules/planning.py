@@ -556,6 +556,7 @@ class PyHopPlanner(base.BaseModule):
         if midcaPlan:
             if verbose >= 2:
                 print "Old plan retrieved. Checking validity...",
+            world.plan_advancement(midcaPlan)
             valid = world.plan_correct(midcaPlan)
             if not valid:
                 midcaPlan = None

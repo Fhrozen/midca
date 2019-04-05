@@ -274,11 +274,14 @@ class MoosObserver(base.BaseModule):
                     states+= "HAZARD(mine" + mine_label + ")\n"
                     states+="hazard_at_location(mine" + mine_label + ",ga1)\n"
                     self.mem.set (self.mem.CURRENT_HAZARD, [mine_label , "ga1"])
+                    self.mem.set(self.mem.HAZARD_LOCATION, {"X": mine_x, "Y": mine_y})
+
 
                 elif (mine_x>=124 and mine_x<=175) and (mine_y>=-102 and mine_y<=-56):
                     states+= "HAZARD(mine" + mine_label + ")\n"
                     states+="hazard_at_location(mine" + mine_label + ",ga2)\n"
                     self.mem.set (self.mem.CURRENT_HAZARD, [mine_label , "ga2"])
+                    self.mem.set(self.mem.HAZARD_LOCATION, {"X": mine_x, "Y": mine_y})
 
                 else:
                         # for mine at qroute or not
@@ -286,10 +289,13 @@ class MoosObserver(base.BaseModule):
                         states+= "HAZARD(mine" + mine_label + ")\n"
                         states+="hazard_at_location(mine" + mine_label + ",qroute)\n"
                         self.mem.set (self.mem.CURRENT_HAZARD, [mine_label , "qroute"])
+                        self.mem.set(self.mem.HAZARD_LOCATION, {"X": mine_x, "Y": mine_y})
+
                     else:
                         states+= "HAZARD(mine" + mine_label + ")\n"
                         states+="hazard_at_location(mine" + mine_label + ",transit)\n"
                         self.mem.set (self.mem.CURRENT_HAZARD, [mine_label , "transit"])
+                        self.mem.set(self.mem.HAZARD_LOCATION, {"X": mine_x, "Y": mine_y})
 
                 path_mines = self.mem.get(self.mem.MINE_LOCATION)
                 remus_location = self.mem.get(self.mem.REMUS_LOCATION)
@@ -356,9 +362,11 @@ class MoosObserver(base.BaseModule):
                 way_point = way_points[-1]
                 if (x > (way_point[0] - 5) and x < (way_point[0] + 5)) and (y > (way_point[1] - 5) and y < (way_point[1] + 5)) :
                     states += "at_location(remus,way_point)\n"
+                    self.mem.set(self.mem.WAY_POINTS, None)
                 else:
                     if "at_location(remus, way_point)" in states:
                         states += "!at_location(remus,way_point)\n"
+
             else:
                 if "at_location(remus, way_point)" in states:
                     states += "!at_location(remus,way_point)\n"

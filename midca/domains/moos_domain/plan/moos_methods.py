@@ -45,7 +45,7 @@ def check_hazard(state,mine,location,vehicle):
     Go through each goal and create an order for each goal
     '''
 
-    if (location == "ga1") or (location == "ga2")or (location == "qroute") :
+    if (location == "ga1") or (location == "ga2")or (location == "qroute") or (location == "transit") :
         return[('remove',mine,location,vehicle)]
     else:
         if mine in state.path_mines:

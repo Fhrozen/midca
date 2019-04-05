@@ -39,11 +39,35 @@ class ASCIIWorldViewer(base.BaseModule):
     
     def init(self, world, mem):
         self.world = world
+        self.mem = mem
 
     def run(self, cycle, verbose = 2):
         if verbose >= 2:
             if self.display:
                 self.display(self.world)
+
+
+class MoosActionSimulator:
+
+    def init(self, world, mem):
+        self.mem = mem
+        self.world = world
+
+    def run(self, cycle, verbose = 2):
+        try:
+            #get selected actions for this cycle. This is set in the act phase.
+            actions = self.mem.get(self.mem.ACTIONS)[-1]
+        except TypeError, IndexError:
+            if verbose >= 1:
+                print "Simulator: no actions selected yet by MIDCA."
+            return
+        if actions:
+            for action in actions:
+                if self.world.is_midca_action_applied(action):
+                    if verbose >= 2:
+                        print "Simulating Applied MIDCA action:", action
+
+
 
 
 class WorldChanger:

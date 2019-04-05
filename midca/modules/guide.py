@@ -3,7 +3,6 @@ from midca import midcatime
 from _goalgen import tf_3_scen, tf_fire
 from midca.domains.logistics import deliverstate
 from midca.domains.blocksworld import blockstate
-from midca.domains.moos_domain.util import polynomial_regression
 from midca.worldsim import stateread
 import copy,csv,sys
 import random
@@ -92,6 +91,7 @@ class MoosGoalInput(UserGoalInput):
 
     def __init__(self,deadline):
         self.deadline =  deadline
+        self.start = 0
 
     def write_to_file(self,cycle):
         file = open("agent.txt", "a")
@@ -105,31 +105,23 @@ class MoosGoalInput(UserGoalInput):
     def run(self, cycle, verbose = 2):
 
         if len(self.mem.get(self.mem.GOAL_GRAPH).getAllGoals()) == 0:
-            # for experiment
-            if self.mem.get(self.mem.MOOS_TIME):
-                self.write_to_file(cycle)
-                print ("Experiment Completed")
-                sys.exit()
 
-            self.mem.set(self.mem.MOOS_DEADLINE , self.deadline)
+            if self.start == 0:
+                raw_input ("Press Enter to Start the experiment")
+                self.start = 1
 
-            # for experiment
+            if self.mem.get(self.mem.WAY_POINTS):
 
-            g = goals.Goal(*["remus","ga1"], predicate = 'cleared_mines')
-            g1 = goals.Goal(*["remus","ga2"], predicate = 'cleared_mines')
-            g2 = goals.Goal(*["remus","home"], predicate = 'at_location')
-            self.mem.get(self.mem.GOAL_GRAPH).insert(g)
-            self.mem.get(self.mem.GOAL_GRAPH).insert(g1)
-            self.mem.get(self.mem.GOAL_GRAPH).insert(g2)
-            print("Midca generated a goal : " + str(g))
-            print("Midca generated a goal : " + str(g1))
-            print("Midca generated a goal : " + str(g2))
-            raw_input("Press Enter to start the Experiment")
-            # Remove after experiment
-            #UserGoalInput.run(self, cycle, verbose = 2)
+                world = self.mem.get(self.mem.STATES)[-1]
+                atoms = copy.deepcopy(world.atoms)
+                for atom in atoms:
+                    if atom.predicate.name == "cleared_mines":
+                        world.atoms.remove(atom)
+                g = goals.Goal(*["remus", "way_point"], predicate='cleared_mines')
+                self.mem.get(self.mem.GOAL_GRAPH).insert(g)
+                print("Midca generated a goal : " + str(g))
+                print self.mem.get(self.mem.WAY_POINTS)
 
-            self.mem.set(self.mem.MOOS_TIME, midcatime.now())
-            self.mem.set(self.mem.MOOS_SCORE, 0)
 
         world = self.mem.get(self.mem.STATES)[-1]
         atoms = copy.deepcopy(world.atoms)
@@ -142,9 +134,9 @@ class MoosGoalInput(UserGoalInput):
                         and not atom.args[0].name in mines_checked:
                 g = []
                 g = goals.Goal(*[atom.args[0].name, atom.args[1].name], predicate='hazard_checked')
-                print("Midca generated a goal" + str(g))
+                print("Midca generated a goal " + str(g))
                 self.mem.get(self.mem.GOAL_GRAPH).insert(g)
-
+                '''
                 if atom.args[1].name == "qroute":
                     g = goals.Goal(*["remus", "way_point"], predicate='cleared_mines')
                     mine_locations = self.mem.get(self.mem.MINE_LOCATION)
@@ -157,7 +149,7 @@ class MoosGoalInput(UserGoalInput):
                     self.mem.set(self.mem.WAY_POINTS, way_points)
                     print("Midca generated a goal" + str(g))
                     self.mem.get(self.mem.GOAL_GRAPH).insert(g)
-
+                '''
 
 
 

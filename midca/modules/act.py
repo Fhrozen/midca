@@ -400,7 +400,7 @@ class Moosact(base.BaseModule):
                     if self.mem.get(self.mem.MOOS_FEEDBACK):
                         if self.world.midca_action_applicable(self.mem.get(self.mem.MOOS_FEEDBACK)) \
                                                 and self.mem.get(self.mem.MOOS_FEEDBACK) == action:
-                            return False
+                            pass
 
                         else:
                             self.mem.set(self.mem.MOOS_FEEDBACK, None)
@@ -456,14 +456,6 @@ class Moosact(base.BaseModule):
 
                     elif (action.op == "remove"):
                         label= int(action.args[0].replace("mine",""))
-
-                        if (action.args[1] == "ga1" or action.args[1] == "ga2"):
-                            score = self.mem.get(self.mem.MOOS_SCORE) + 1
-                            self.mem.set(self.mem.MOOS_SCORE, score)
-
-                        if (action.args[1] == "qroute"):
-                            score = self.mem.get(self.mem.MOOS_SCORE) + 1
-                            self.mem.set(self.mem.MOOS_SCORE, score)
 
                         for i in range(2):
                             self.publisher.send_multipart(
@@ -625,18 +617,16 @@ class Moosact(base.BaseModule):
                                 x = way_point[0]
                                 y = way_point[1]
                                 points = points + str(x) + "," + str(y)
-                            message = [b"M", b"points = " +points+" # speed= 0.5"]
+                            message = [b"M", b"points = " +points+" # speed= 1"]
                             suspended_action = self.mem.get(self.mem.MOOS_SUSPENDED_ACTION)
                             if (suspended_action) \
                                     and (suspended_action == message):
-                                for i in range(2):
-                                    self.publisher.send_multipart([b"M", b"speed = 0.5"])
+                                self.publisher.send_multipart([b"M", b"speed = 1"])
                                 self.mem.set(self.mem.MOOS_FEEDBACK, action)
                                 return False
 
                             else:
-                                for i in range(2):
-                                    self.publisher.send_multipart(message)
+                                self.publisher.send_multipart(message)
                                 self.mem.set(self.mem.MOOS_FEEDBACK, action)
                                 self.mem.set(self.mem.MOOS_SUSPENDED_ACTION, message)
 

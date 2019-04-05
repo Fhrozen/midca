@@ -1,6 +1,6 @@
 from __future__ import print_function
 from midca import base
-from midca.modules import simulator, perceive, guide,assess, evaluate, intend, planning, act
+from midca.modules import simulator, perceive, guide,assess, evaluate, intend, planning,planning_challenge, act
 from midca.worldsim import domainread, stateread
 from midca.domains.moos_domain import util
 from midca.domains.moos_domain.plan import moos_methods, moos_operators
@@ -48,6 +48,7 @@ myMidca.append_module("Perceive",perceive.MoosObserver())
 myMidca.append_module("Interpret", guide.MoosGoalInput(deadline=250))
 myMidca.append_module("Eval", evaluate.SimpleEval_moos())
 myMidca.append_module("Intend", intend.SimpleIntend())
+myMidca.append_module("Plan", planning_challenge.WaypointPlanner()) # set up planner for sample domain
 myMidca.append_module("Plan", planning.PyHopPlanner(util.pyhop_state_from_world,
                                                     util.pyhop_tasks_from_goals,
                                                     DECLARE_METHODS_FUNC,

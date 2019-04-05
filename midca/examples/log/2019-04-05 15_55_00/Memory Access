@@ -1,0 +1,76 @@
+.000729 - Memory access at key __goals
+.003688 - Memory access at key __PlanningCount
+.005316 - Memory access at key __goals
+.009140 - Starting cycle 0
+
+.009408 - ****** Starting Simulate Phase ******
+
+.010094 - ****** Starting Perceive Phase ******
+
+.013251 - Memory access at key __world states
+.015329 - Memory access at key __world states
+.021051 - ****** Starting Interpret Phase ******
+
+.021369 - Memory access at key __goals
+1.300190 - Memory access at key __goals
+1.301035 - Memory access at key __world states
+1.301790 - ****** Starting Eval Phase ******
+
+1.301989 - Memory access at key __world states
+1.307860 - ****** Starting Intend Phase ******
+
+1.308140 - Memory access at key __goals
+1.308577 - Memory access at key __current goals
+1.310278 - ****** Starting Plan Phase ******
+
+1.310577 - Memory access at key __ predicted waypoint
+1.310783 - Memory access at key __world states
+1.310896 - Memory access at key __current goals
+1.317633 - Memory access at key __goals
+1.318322 - Memory access at key __PlanningCount
+1.318728 - Memory access at key __PlanningCount
+1.320289 - Memory access at key __goals
+1.320584 - ****** Starting Act Phase ******
+
+1.320803 - Memory access at key __world states
+1.320931 - Memory access at key __current goals
+1.321570 - Memory access at key __goals
+1.327771 - Memory access at key __actions
+1.327885 - Memory access at key __actions
+1.328129 - Memory access at key __actions
+1.328399 - Memory access at key __ predicted waypoint
+1.328889 - Memory access at key __feedback
+1.329096 - Memory access at key __previous action
+1.329277 - Starting cycle 1
+
+1.329456 - ****** Starting Simulate Phase ******
+
+1.330370 - ****** Starting Perceive Phase ******
+
+1.330585 - Memory access at key __world states
+1.340737 - Memory access at key __ predicted waypoint
+1.340953 - Memory access at key __ remus location
+1.341846 - Memory access at key __world states
+1.342061 - Memory access at key __world states
+1.346624 - ****** Starting Interpret Phase ******
+
+1.346900 - Memory access at key __goals
+1.347032 - Memory access at key __world states
+1.347617 - ****** Starting Eval Phase ******
+
+1.347994 - Memory access at key __world states
+1.348119 - Memory access at key __current goals
+1.353692 - ****** Starting Intend Phase ******
+
+1.354113 - Memory access at key __goals
+1.354296 - Memory access at key __current goals
+1.354413 - Memory access at key __current goals
+1.354745 - ****** Starting Plan Phase ******
+
+1.354919 - Memory access at key __ remus location
+1.355032 - Memory access at key __ predicted waypoint
+1.355137 - Memory access at key __ predicted waypoint
+1.355361 - Memory access at key __ predicted waypoint
+1.355509 - Memory access at key __world states
+1.355610 - Memory access at key __current goals
+1.362248 - Memory access at key __goals

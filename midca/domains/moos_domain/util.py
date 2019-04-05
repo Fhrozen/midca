@@ -4,11 +4,6 @@ A collection of functions that are domain specific, which different MIDCA compon
 import os,copy
 from midca.modules._plan import pyhop
 
-import numpy as np
-import matplotlib.pyplot as plt
-import pandas as pd
-from sklearn.linear_model import LinearRegression
-from sklearn.preprocessing import PolynomialFeatures
 
 def preferApprehend(goal1, goal2):
     if 'predicate' not in goal1 or 'predicate' not in goal2:
@@ -64,32 +59,3 @@ def pyhop_tasks_from_goals(goals, pyhopState):
         alltasks.append(("achieve_goals", ordergoals))
     return alltasks
 
-def polynomial_regression(data=0,  deg = 1):
-    '''
-
-    :param data: gets the current X value to predict y
-    :param deg:  What will be the degree of polynomial equation
-    :return: The new predicted Y value from the equation
-    '''
-    datas = pd.read_csv('/home/sampath/moos-ivp/moos-ivp-midca/missions/gatars/mines_ga1.csv')
-    x = []
-    y = []
-    # get the data (x and y rows)
-    x = datas.iloc[:, 1:2].values
-    y = datas.iloc[:, 2].values
-
-    # create the instance for training polynomial regression
-    poly = PolynomialFeatures(degree = deg)
-    X_poly = poly.fit_transform(x)
-    poly.fit(X_poly, y)
-
-    # grab the line equation out of it
-    lin2 = LinearRegression(normalize = True)
-    lin2.fit(X_poly, y)
-
-    # predict for the new data
-    predict = [[data]]
-    # transform the prediction to fit the model type
-    predict_ = poly.fit_transform(predict)
-    lin2.predict(predict_)
-    return lin2.predict(predict_)[0]

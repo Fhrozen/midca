@@ -1,0 +1,122 @@
+.002302 - Goal Graph initialized.
+
+.002559 - [cognitive] Initializing Simulate module 1 ASCIIWorldViewer...done.
+
+.003651 - [cognitive] Initializing Perceive module 1 MoosObserver...done.
+
+.003893 - [cognitive] Initializing Interpret module 1 MoosGoalInput...done.
+
+.004071 - [cognitive] Initializing Eval module 1 SimpleEval_moos...done.
+
+.004240 - [cognitive] Initializing Intend module 1 SimpleIntend...done.
+
+.004464 - [cognitive] Initializing Plan module 1 WaypointPlanner...done.
+
+.005022 - [cognitive] Initializing Plan module 2 PyHopPlanner...done.
+
+.014500 - [cognitive] Initializing Act module 1 Moosact...done.
+
+.016910 - 
+MIDCA is starting. Please enter commands, or '?' + enter for help. Pressing enter with no input will advance the simulation by one phase.
+
+.017053 - Starting cycle 0
+
+.017237 - ****** Starting Simulate Phase ******
+
+.018264 - [
+ga1 (SEA_ROUTE)
+ga2 (SEA_ROUTE)
+home (SEA_ROUTE)
+qroute (SEA_ROUTE)
+qroute_transit (SEA_ROUTE)
+remus (UUV) : enabled(remus)
+transit (SEA_ROUTE)
+transit1 (SEA_ROUTE)
+transit2 (SEA_ROUTE)
+way_point (SEA_ROUTE)
+]
+
+.018586 - ****** Starting Perceive Phase ******
+
+.021583 - states not received
+
+.024543 - World observed.
+
+.030181 - ****** Starting Interpret Phase ******
+
+1.246224 - Press Enter to Start the experimentMidca generated a goal : Goal(remus, way_point, predicate: cleared_mines)
+
+1.246737 - ****** Starting Eval Phase ******
+
+1.250710 - No current goals. Skipping eval
+
+1.251842 - ****** Starting Intend Phase ******
+
+1.254029 - Selecting goal(s): Goal(remus, way_point, predicate: cleared_mines)
+
+1.255186 - ****** Starting Plan Phase ******
+
+1.263778 - Planning...
+
+1.264526 - Planning complete.
+
+1.264953 - Plan: 
+
+1.265244 -   slow_survey(remus, way_point)
+
+1.265388 -   remove_mines(remus, way_point)
+
+1.266289 - ****** Starting Act Phase ******
+
+1.285085 - Selected action slow_survey(remus, way_point) from plan:
+
+1.285422 - slow_survey(remus, way_point)]0m remove_mines(remus, way_point)
+
+1.287083 - Starting cycle 1
+
+1.287393 - ****** Starting Simulate Phase ******
+
+1.287648 - [
+ga1 (SEA_ROUTE)
+ga2 (SEA_ROUTE)
+home (SEA_ROUTE)
+qroute (SEA_ROUTE)
+qroute_transit (SEA_ROUTE)
+remus (UUV) : enabled(remus)
+transit (SEA_ROUTE)
+transit1 (SEA_ROUTE)
+transit2 (SEA_ROUTE)
+way_point (SEA_ROUTE)
+]
+
+1.287957 - ****** Starting Perceive Phase ******
+
+1.288377 - X:-15.792844,Y:-7.822255,SPEED:0.000000,HEADING:224.998884
+
+1.288518 - -15.792844
+
+1.288664 - -7.822255
+
+1.288765 - 224.998884
+
+1.291386 - Mine Report not received
+
+9.180968 - enterat_location(remus,transit)
+at_location(remus,way_point)
+
+9.181486 - World observed.
+
+9.183670 - ****** Starting Interpret Phase ******
+
+9.184779 - ****** Starting Eval Phase ******
+
+9.188929 - Not all goals achieved; Goal(remus, way_point, predicate: cleared_mines) is not true.
+
+9.189739 - ****** Starting Intend Phase ******
+
+9.190873 - No goals selected.
+
+9.191160 - ****** Starting Plan Phase ******
+
+9.197884 - Old plan retrieved. Checking validity...
+

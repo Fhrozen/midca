@@ -89,6 +89,7 @@ class Memory:
 	MINE_LOCATION = "__location of mines"
 	REMUS_LOCATION = "__ remus location"
 	WAY_POINTS ="__ predicted waypoint"
+	HAZARD_LOCATION = "__mine_location"
 
 	def __init__(self, args = {}):
 		self.knowledge = {}

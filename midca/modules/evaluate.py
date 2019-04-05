@@ -131,14 +131,6 @@ class SimpleEval_moos(base.BaseModule):
 
         goals_changed = False # for trace
 
-        # for saving results to file
-        time_taken = midcatime.now() - self.mem.get(self.mem.MOOS_TIME)
-        print (time_taken)
-        if (time_taken >= self.mem.get(self.mem.MOOS_DEADLINE)):
-            self.write_to_file(cycle)
-            raw_input("Experiment completed")
-            sys.exit()
-
         if goals:
             for goal in goals:
                 try:

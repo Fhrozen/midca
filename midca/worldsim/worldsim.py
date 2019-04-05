@@ -640,6 +640,21 @@ class World:
 			if not action.prePos[i] and self.atom_true(action.preconds[i]):
 				return False
 		return True
+
+	def is_applied(self, action):
+		for i in range(len(action.results)):
+			if not self.atom_true(action.results[i]):
+				return False
+		return True
+
+	def is_midca_action_applied(self, midcaAction):
+		try:
+			operator = self.operators[midcaAction.op]
+			args = [self.objects[arg] for arg in midcaAction.args]
+		except KeyError:
+			return False
+		action = operator.instantiate(args)
+		return self.is_applied(action)
 	
 	#convenience method for operating with MIDCA
 	def midca_action_applicable(self, midcaAction):
@@ -732,10 +747,18 @@ class World:
 			return Atom(predicate, args)
 		except Exception:
 			raise ValueError(str(predicate) + str(args) + " does not seem to be a valid state")
-	
+
+	def plan_advancement(self, plan):
+
+		testWorld = self.copy()
+		for action in plan.get_remaining_steps():
+			if testWorld.is_midca_action_applied(action):
+				plan.advance()
+
 	def plan_correct(self, plan):
 		testWorld = self.copy()
 		for action in plan.get_remaining_steps():
+			print action
 			if not testWorld.midca_action_applicable(action):
 				return False
 			testWorld.apply_midca_action(action)
