@@ -619,7 +619,12 @@ class Moosact(base.BaseModule):
                                 points = points + str(x) + "," + str(y)
                             message = [b"M", b"points = " +points+" # speed= 1"]
                             suspended_action = self.mem.get(self.mem.MOOS_SUSPENDED_ACTION)
-                            if (suspended_action) \
+                            feedback_action = self.mem.get(self.mem.MOOS_FEEDBACK)
+                            if  (feedback_action) \
+                                    and (feedback_action == action) \
+                                    and (suspended_action == message):
+                                pass
+                            elif (suspended_action) \
                                     and (suspended_action == message):
                                 self.publisher.send_multipart([b"M", b"speed = 1"])
                                 self.mem.set(self.mem.MOOS_FEEDBACK, action)
