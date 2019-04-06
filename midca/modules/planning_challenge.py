@@ -61,16 +61,11 @@ class WaypointPlanner(base.BaseModule):
 
         :return: a list of way_points
         """
-        #way_points = [[-16, -8], [-17, -142],
-        #              [92, -144], [89, -7],
-        #              [216, -5], [195, -138]
-        #              ]
-        way_points = [[52,2], [20,-1],
-                      [18,-39], [53,-29],
-                      [69,-45], [103,-55],
-                      [101,-95], [57,-91],
-                      [57,-55], [80,-141],
-                      [141,-97], [198, -59]]
+        way_points = [[-16, -8], [-17, -142],
+                      [92, -144], [89, -7],
+                      [216, -5], [195, -138]
+                      ]
+
 
         return way_points
 
@@ -94,6 +89,7 @@ class WaypointPlanner(base.BaseModule):
         remus_location = self.get_remus_location()
         hazard_location = self.get_mine_location()
 
+        # a simple behaviour for understanding the output format feel free to rempve the below code
         way_points = self.sample_behavior()
 
         """

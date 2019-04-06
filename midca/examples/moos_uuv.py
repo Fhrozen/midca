@@ -43,7 +43,7 @@ myMidca = base.PhaseManager(world, display = DISPLAY_FUNC, verbose=4)
 for phase in ["Simulate","Perceive","Interpret","Eval","Intend","Plan","Act"]:
     myMidca.append_phase(phase)
 # Add the modules which instantiate basic operation
-myMidca.append_module("Simulate", simulator.ASCIIWorldViewer(display=DISPLAY_FUNC))
+#myMidca.append_module("Simulate", simulator.ASCIIWorldViewer(display=DISPLAY_FUNC))
 myMidca.append_module("Perceive",perceive.MoosObserver())
 myMidca.append_module("Interpret", guide.MoosGoalInput(deadline=250))
 myMidca.append_module("Eval", evaluate.SimpleEval_moos())
