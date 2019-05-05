@@ -104,7 +104,7 @@ class RosMidca:
         also be possible to have one handler implement both behaviors, but this might not
         be desirable.
         '''
-        print "trying to send message on topic", topic
+        print("trying to send message on topic", topic)
         sent = False
         for handler in self.outgoingMsgHandlers:
             if handler.topic == topic:

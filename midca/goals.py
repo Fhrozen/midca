@@ -380,5 +380,5 @@ class GoalGraph:
         #dot_output = subprocess.check_output(shlex.split(genPDFCommand))
         #print "dot_output = " + str(dot_output)
         #subprocess.call(shlex.split("del "+dotfilename))
-        print "Drawing of current goal graph written to " + pdf_filename
+        print("Drawing of current goal graph written to " + pdf_filename)
 
